@@ -71,8 +71,23 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## To test your install composer:
 $ composer
 
-# Run Laravel Project
+## Run Laravel Project
  $ cd /var/www/html/my_project (change dir )
+ 
+ $ php artisan serve
+ 
+ ## Use Default AUTH via artisan make:auth
+ $ composer require laravel/ui (install laravel ui using composer)
+ 
+ $ php artisan ui vue --auth (create auth using artisan)
+ 
+ $ npm intsall 
+ 
+ $ npm run dev
+ 
+ create database and chnage .env file
+ 
+ $ php artisan migrate
  
  $ php artisan serve
  
