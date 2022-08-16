@@ -120,7 +120,27 @@ Run seeder with class name other wise call UserSeeder in DatabaseSeeder like
  
  run  $ php artisan serve.
 
- 
+ ## Use Yajara Plugin ( list ,edit ,delete)
+   
+  ### install Yajara Plugin 
+  
+  $ composer require yajra/laravel-datatables:^1.5
+  
+  ### load datatable
+   create a view and display listing data using a blade template, in this load data table method and the AJAX request is fetching the data from the            server and displays the name and email with the help of  Yajra DataTable package. 
+   
+   create function for get data from database.this function  will manage layout and getting data request and return response
+   
+   ###  Row Render For Edit/Delete
+   
+   create link for edit and delete in controller get data function..
+   
+   create blade file for update form.
+    
+   create function to update record from database and redirect datatable with status. 
+       
+   create function to delete record from database and redirect datatable with status .
+  
 
 
 
