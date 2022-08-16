@@ -81,6 +81,13 @@ $ composer
  
  $ php artisan ui vue --auth (create auth using artisan)
  
+ $ npm intsall 
+ 
+ $ npm run dev
+ 
+ create database and chnage .env file
+ 
+ $ php artisan migrate
  
 
 
