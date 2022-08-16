@@ -93,7 +93,7 @@ $ composer
  
  ## Use Seed and Generate testing data for user table
  
- $ php artisan make:seeder UserSeeder (creae seeder class)
+ $ php artisan make:seeder UserSeeder (create seeder class)
  
  seeder class in use faker factory  'use Faker\Factory as Faker' and Generate testing data.
  
