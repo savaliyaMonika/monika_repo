@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/datatble', [App\Http\Controllers\HomeController::class, 'simpleDataTable'])->name('datatble');
+//Route::get('/yajraDataTable', [App\Http\Controllers\HomeController::class, 'showYajraDataTable'])->name('yajraDataTable');
+Route::get('/yajraDataTablelist', [App\Http\Controllers\HomeController::class, 'getUserData'])->name('yajraDataTablelist');
+Route::get('/updateUserForm', [App\Http\Controllers\HomeController::class, 'updateUserForm'])->name('updateUserForm');
+Route::post('/updateUser', [App\Http\Controllers\HomeController::class, 'updateUser'])->name('updateUser');
+Route::get('/deleteUser', [App\Http\Controllers\HomeController::class, 'deleteUser'])->name('deleteUser');
