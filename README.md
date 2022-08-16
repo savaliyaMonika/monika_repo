@@ -102,7 +102,6 @@ $ composer
 Run seeder with class name other wise call UserSeeder in DatabaseSeeder like   
  
  $this->call([
-          
           UserSeeder::class
        
        ]);
