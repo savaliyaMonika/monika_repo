@@ -73,6 +73,7 @@ $ composer
 
 # Run Laravel Project
  $ cd /var/www/html/my_project (change dir )
+ 
  $ php artisan serve
  
 
