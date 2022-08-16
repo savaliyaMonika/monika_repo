@@ -78,6 +78,7 @@ $ composer
  
  ## Use Default AUTH via artisan make:auth
  $ composer require laravel/ui (install laravel ui using composer)
+ 
  $ php artisan ui vue --auth (create auth using artisan)
  
  
