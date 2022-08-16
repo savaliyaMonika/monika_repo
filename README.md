@@ -102,7 +102,7 @@ $ composer
 Run seeder with class name other wise call UserSeeder in DatabaseSeeder like   
  
  $this->call([
-          
+ 
           UserSeeder::class
        
        ]);
@@ -110,7 +110,16 @@ Run seeder with class name other wise call UserSeeder in DatabaseSeeder like
   $ php artisan db:seed
        
 
+ ## Use Datatable to show user listing
  
+ Add bootstrap cdn link in app.blade file.
+ 
+ get users table data and show in home.blade file.
+ 
+ add javascript code for load datatable in home.blade file.
+ 
+ run  $ php artisan serve.
+
  
 
 
