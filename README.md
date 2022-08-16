@@ -110,7 +110,7 @@ Run seeder with class name other wise call UserSeeder in DatabaseSeeder like
   $ php artisan db:seed
        
 
- ## Use Datatable to show luser isting
+ ## Use Datatable to show user listing
  
  Add bootstrap cdn link in app.blade file.
  
