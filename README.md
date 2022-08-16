@@ -91,6 +91,27 @@ $ composer
  
  $ php artisan serve
  
+ ## Use Seed and Generate testing data for user table
+ 
+ $ php artisan make:seeder UserSeeder (creae seeder class)
+ 
+ seeder class in use faker factory  'use Faker\Factory as Faker' and Generate testing data.
+ 
+ $ php artisan db:seed --class::UserSeeder 
+
+Run seeder with class name other wise call UserSeeder in DatabaseSeeder like   
+ 
+ $this->call([
+          
+          UserSeeder::class
+       
+       ]);
+   
+  $ php artisan db:seed
+       
+
+ 
+ 
 
 
 
