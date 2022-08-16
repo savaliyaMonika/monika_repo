@@ -67,6 +67,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## install composer
 - ** $ sudo apt update**
 - ** $sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer **
+
 ##To test your install composer:
 composer
 
