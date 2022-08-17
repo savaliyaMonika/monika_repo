@@ -121,6 +121,45 @@ Run seeder with class name other wise call UserSeeder in DatabaseSeeder like
  run  $ php artisan serve.
 
  
+##  Configure Email
+
+### Send Email via php artisan
+Configuration SMTP in . env.
+
+	MAIL_DRIVER=smtp
+	MAIL_HOST=ssl.gmail.com 
+	MAIL_PORT=465
+	MAIL_USERNAME=Add your user name here
+	MAIL_PASSWORD=Add your password here
+	MAIL_ENCRYPTION=ssl 
+
+Create Mailable Class.
+
+Add Email Send Route.
+
+Create Directory And Blade View.
+
+Create Email Controller.
+
+Run Development Server.
+
+### Send Email on Delete Action 
+
+Add send mail code in delete user function.
+
+### Use model on Delete (Observable & Mailable)
+
+Create Observer Class 
+
+Php artisan make:observer "observer name" --model="model name"
+
+Register observer App\Providers\EventServiceProvider  in boot ()
+
+
+	User::observe(UserObserver::class);
+
+Add send mail code in delete observer function.
+
 
 
 

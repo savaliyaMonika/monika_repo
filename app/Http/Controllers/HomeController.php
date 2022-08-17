@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use DataTables;
 use Illuminate\Support\Facades\Redirect;
+use Mail;
+use App\Mail\NotifyMail;
 
 class HomeController extends Controller
 {
@@ -29,49 +31,56 @@ class HomeController extends Controller
     public function index()
     {
 
-       // $this->data['result'] = db::table('users')->get();
-        return view('home',$this->data);
+        // $this->data['result'] = db::table('users')->get();
+        return view('home', $this->data);
     }
-    public function simpleDataTable(){
+    public function simpleDataTable()
+    {
 
         $this->data['result'] = db::table('users')->get();
-        return view('simpleDataTable',$this->data);
+        return view('simpleDataTable', $this->data);
     }
-  /*  public function showYajraDataTable(){
-        return view('userList',$this->data);
-    } */
-    public function getUserData(Request $request){
-        if ($request->ajax()) {
-            $data = User::select('*');
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row){
-     
-                           $btn = "<a href='updateUserForm?id=".$row->id."' class='edit btn btn-info btn-sm'>Edit</a> <a href='deleteUser?id=".$row->id."' class='edit btn btn-danger btn-sm'>Delete</a>";
-    
-                            return $btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
-        return view('userList');
+    public function showYajraDataTable()
+    {
+        return view('userList', $this->data);
     }
-    public function updateUserForm(Request $request){
+    public function getUserData(Request $request)
+    {
+
+        $configuration = User::select('*');
+        // $configuration->where('user_type','admin');
+        return Datatables::of($configuration)->make(true);
+    }
+
+    public function updateUserForm(Request $request)
+    {
         $this->data['result'] =  User::find($request->id);
-       
-        return view('updateUser',$this->data);
+
+        return view('updateUser', $this->data);
     }
-    public function updateUser(Request $request){
+    public function updateUser(Request $request)
+    {
         $user = User::find($request->id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->update();
-        return redirect()->route('yajraDataTablelist')->with('status','User Updated Successfully..!!!!');
+        return redirect()->route('yajraDataTable')->with('status', 'User Updated Successfully..!!!!');
     }
-    public function deleteUser(Request $request){
+    public function deleteUser(Request $request)
+    {
         //$user = User::destroy($request->id);
-        $user =User::find($request->id);
+        $user = User::find($request->id);
         $user->delete();
-        return redirect()->route('yajraDataTablelist')->with('status','User Delete Successfully..!!!!');
+
+        $details = [
+            'subject'=>'Delete User',
+            "title"=>'Mail for Testing',
+            "body"=>"Hello ".$user->name.", <br> <p> You have Remove in application </p> <br><p> Thank you</p>"
+        ];
+        Mail::to('monika.savaliya@logisticinfotech.co.in')->send(new NotifyMail($details));
+
+      /* Mail::to($user->email)->send(new NotifyMail($details));*/
+
+        return redirect()->route('yajraDataTable')->with('status', 'User Delete Successfully..!!!!');
     }
 }
