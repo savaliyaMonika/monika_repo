@@ -194,6 +194,28 @@ create form for add user , add insert query in controller method with validation
 
 create from for update user , add update query in controller method with validation
  
+## 	Getter / Setter method ( accessor / mutator )
+ ### Getter 
+
+ Here full name is not in the users table we need to append it to the Users model 
+
+ Create fullname attribute  -   protected $appends = ['fullname'];
+
+ Using getFullNameAttribute() - marge name and user type in fullname attribute.
+
+ ### Mutator
+
+ set(fieldName)Attribute($value)
+
+ where $value is the field value we pass. Following function is the mutator for user_type field, everytime use create or update the User model with user_type field it will automatically add 'user' string  to the database.
+
+
+
+
+
+
+
+
 
 
     

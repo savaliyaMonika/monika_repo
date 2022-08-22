@@ -39,6 +39,7 @@
                         <th class="text-center">Name</th>
                         <th class="text-center">Email</th>
                         <th class="text-center">User</th>
+                        <th class="text-center">Full Name</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -76,6 +77,10 @@
                     {
                         data: 'user_type'
                     },
+                    {
+                        data: 'full_name'
+                    },
+                    
                     {
                         data: null,
                         searchable: false,

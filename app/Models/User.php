@@ -34,6 +34,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = ['full_name'];
+
     /**
      * The attributes that should be cast.
      *
@@ -42,4 +44,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Accessor 
+    public function getUserTypeAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    function getFullNameAttribute()
+    {
+        return $this->attributes['name'] . ' ' . $this->attributes['user_type'];
+    }
+
+    // muatator 
+    
+  /*  public function setUserTypeAttribute($value){
+        $this->attributes['user_type']= $value. 'user';
+    } */ 
 }
