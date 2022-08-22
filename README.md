@@ -120,8 +120,27 @@ Run seeder with class name other wise call UserSeeder in DatabaseSeeder like
  
  run  $ php artisan serve.
 
-<<<<<<< HEAD
- 
+ ## Use Yajara Plugin ( list ,edit ,delete)
+   
+  ### install Yajara Plugin 
+  
+  $ composer require yajra/laravel-datatables:^1.5
+  
+  ### load datatable
+   create a view and display listing data using a blade template, in this load data table method and the AJAX request is fetching the data from the            server and displays the name and email with the help of  Yajra DataTable package. 
+   
+   create function for get data from database.this function  will manage layout and getting data request and return response
+   
+   ###  Row Render For Edit/Delete
+   
+   create link for edit and delete in controller get data function..
+   
+   create blade file for update form.
+    
+   create function to update record from database and redirect datatable with status. 
+       
+   create function to delete record from database and redirect datatable with status .
+
 ##  Configure Email
 
 ### Send Email via php artisan
@@ -161,30 +180,20 @@ Register observer App\Providers\EventServiceProvider  in boot ()
 
 Add send mail code in delete observer function.
 
-=======
- ## Use Yajara Plugin ( list ,edit ,delete)
-   
-  ### install Yajara Plugin 
-  
-  $ composer require yajra/laravel-datatables:^1.5
-  
-  ### load datatable
-   create a view and display listing data using a blade template, in this load data table method and the AJAX request is fetching the data from the            server and displays the name and email with the help of  Yajra DataTable package. 
-   
-   create function for get data from database.this function  will manage layout and getting data request and return response
-   
-   ###  Row Render For Edit/Delete
-   
-   create link for edit and delete in controller get data function..
-   
-   create blade file for update form.
-    
-   create function to update record from database and redirect datatable with status. 
-       
-   create function to delete record from database and redirect datatable with status .
-  
->>>>>>> 78e9aecaf509813ab65f14cc835bcdfa38da26cd
+## Create Add/Edit user and save it & Check for server side Validation.
 
+create new controller AdminController 
+
+Add bootstrap theam 
+
+create Request class for validation
+
+$ php artisan make:Request UserRequest
+
+create form for add user , add insert query in controller method with validation
+
+create from for update user , add update query in controller method with validation
+ 
 
 
     
