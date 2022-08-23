@@ -8,6 +8,9 @@ use App\Mail\NotifyMail;
 
 class UserObserver
 {
+    public function creating(User $user){
+        $user->refrence_no  = random_int(100000, 999999);
+    }
     /**
      * Handle the User "created" event.
      *

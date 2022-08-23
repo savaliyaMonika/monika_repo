@@ -209,7 +209,9 @@ create from for update user , add update query in controller method with validat
 
  where $value is the field value we pass. Following function is the mutator for user_type field, everytime use create or update the User model with user_type field it will automatically add 'user' string  to the database.
 
+## Create Refrence of 6 Digit using Observable
 
+Create Observable and add random_int() on creating method. 
 
 
 
