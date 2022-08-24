@@ -213,6 +213,59 @@ create from for update user , add update query in controller method with validat
 
 Create Observable and add random_int() on creating method. 
 
+##  Auth Token Validation with JWT & Dingo
+ ### Auth Token  Using JWT 
+
+ Install third party jwt-auth package.
+
+ $ composer require tymon/jwt-auth
+
+  Add jwt package into a service provider
+
+  'providers' => [
+   ...
+'Tymon\JWTAuth\Providers\LaravelServiceProvider',
+],
+'aliases' => [
+    ...
+    'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+     'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+],
+
+ Publish jwt configuration
+
+ php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+ Generate JWT Key
+
+php artisan jwt:secret
+
+ Create jwt middleware
+
+ To use this middleware register this into Kernel
+
+ Create API Routes
+
+Create API controller
+
+Update User.php model
+
+
+ public function getJWTCustomClaims()
+
+    {
+
+        return [];
+        
+    }
+
+    public function products()
+
+    {
+
+        return $this->hasMany(Product::class);
+
+    }
 
 
 
