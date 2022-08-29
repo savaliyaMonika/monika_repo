@@ -267,6 +267,58 @@ Update User.php model
 
     }
 
+## Send mail using Queue , laravel mix , laravel collective
+
+### Send mail using Queue
+
+ open .env file and define database queue driver on “.env” file
+
+ QUEUE_CONNECTION=database
+
+ Then open the terminal and run following command for queue database tables:
+
+$ php artisan queue:table
+
+Next, migrate tables into database:
+
+$ php artisan migrate
+
+create queue job using the following command:
+
+$ php artisan make:job QueueJob
+
+Run Development Server.
+
+###  laravel mix
+
+Installing Laravel Mix:
+
+npm install
+
+Running Mix:
+
+npm run dev
+
+###   laravel collective
+
+Install laravel collective:
+
+$ composer require laravelcollective/html
+
+app.php file , In this file locate providers which should look something like :
+
+Collective\Html\HtmlServiceProvider::class,
+
+After providers, look for aliases and add the following lines at its bottom
+
+'Form' => Collective\Html\FormFacde::class,
+'Html' => Collective\Html\HtmlFacde::class,
+
+
+
+
+
+
 
 
 
