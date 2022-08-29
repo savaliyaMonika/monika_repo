@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +41,16 @@ Route::post('/admin/insertUser', [AdminController::class, 'insertUser'])->name('
 Route::get('/admin/editUserForm', [AdminController::class, 'editUserForm'])->name('admin/editUserForm');
 Route::post('/admin/editUser', [AdminController::class, 'editUser'])->name('admin/editUser');
 Route::get('/admin/deleteUserData', [AdminController::class, 'deleteUserData'])->name('admin/deleteUserData');
+
+
+Route::get('/admin/books', [BookController::class, 'index'])->name('admin/books');
+Route::post('/admin/addBook', [BookController::class, 'addBook'])->name('admin/addBook');
+Route::post('/admin/bookList', [BookController::class, 'getBookData'])->name('admin/bookList');
+
+Route::view('admin/product', 'admin.product');
+
+Route::get('queue-email', function(){
+    $details['email'] = 'monika.savaliya@logisticinfotech.co.in';
+    dispatch(new App\Jobs\QueueJob($details));
+    return response()->json(['message'=>'Mail Send Successfully!!']);
+});

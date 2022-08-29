@@ -11,6 +11,14 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+/* mix.js('resources/js/app.js', 'public/js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css'); */
+
+mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/datatables-demo.js','public/js')
+    .js('resources/js/sb-admin-2.min.js','public/js')
+    .postCss('resources/css/sb-admin-2.min.css','public/css')
+    .postCss('resources/css/dataTables.bootstrap4.min.css','public/css')
+    .postCss('resources/css/app.css','public/css');
+   

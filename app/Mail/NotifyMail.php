@@ -28,6 +28,7 @@ class NotifyMail extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->details['subject'])->html($this->details['body']);  //->view('emails.emailMsg');
+        //return $this->subject($this->details['subject'])->html($this->details['body']);  //->view('emails.emailMsg');
+        return view('emails.emailMsg');
     }
 }

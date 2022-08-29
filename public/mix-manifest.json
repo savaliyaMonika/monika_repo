@@ -1,4 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/datatables-demo.js": "/js/datatables-demo.js",
+    "/js/sb-admin-2.min.js": "/js/sb-admin-2.min.js",
+    "/css/app.css": "/css/app.css",
+    "/css/dataTables.bootstrap4.min.css": "/css/dataTables.bootstrap4.min.css",
+    "/css/sb-admin-2.min.css": "/css/sb-admin-2.min.css"
 }

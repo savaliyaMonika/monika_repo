@@ -26,6 +26,11 @@
              <i class="fas fa-fw fa-tachometer-alt"></i>
              <span>Add User</span></a>
      </li>
+     <li class="nav-item ">
+        <a class="nav-link" href="{{ url('admin/books') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Books</span></a>
+    </li>
      <!-- Divider -->
      <hr class="sidebar-divider d-none d-md-block">
 
