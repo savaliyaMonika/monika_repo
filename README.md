@@ -357,7 +357,35 @@ Add Transformer in your Project:
     php artisan make:transformer User
 
 
+### Create folder for API -> V1 , V2 and put files accordingly
 
+Applying versioning to folders
+
+The first thing to do is to organize the folders. Create a folder called Api inside app/Http/Controllers, after, create do two folders called V1 and V2 inside app/Http/Controllers/Api, you should have something like this:
+
+    app/Http/Controllers/Api/V1
+    app/Http/Controllers/Api/V2
+
+create controllers
+
+    $  php artisan make:controller Api/V1/MyController
+    $  php artisan make:controller Api/V2/MyController
+
+Add getUser() Function in both controllers
+
+###  Use Prefix API / V1 or API/ V2 in api version.
+
+Add Api Router With V1/V2 Prefix.
+
+    $api->version('v1', ['middleware' => 'api.auth'], function ($api) { 
+        $api->group(['prefix' => 'v1'], function ($api) { 
+            $api->get('getUsers', [MyController::class, 'getUsers']);
+        });
+
+        $api->group(['prefix' => 'v2'], function ($api) { 
+            $api->get('getUsers', [V2Controller::class, 'getUsers']);
+        });
+    });
 
 
 
