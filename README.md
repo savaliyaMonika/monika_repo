@@ -68,46 +68,43 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - ** $ sudo apt update**
 - ** $sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer **
 
-## To test your install composer:
-$ composer
+## To test your install composer:   
+    $ composer
 
 ## Run Laravel Project
- $ cd /var/www/html/my_project (change dir )
- 
- $ php artisan serve
- 
+    $ cd /var/www/html/my_project (change dir )
+    
+    $ php artisan serve
+    
  ## Use Default AUTH via artisan make:auth
- $ composer require laravel/ui (install laravel ui using composer)
- 
- $ php artisan ui vue --auth (create auth using artisan)
- 
- $ npm intsall 
- 
- $ npm run dev
+    $ composer require laravel/ui (install laravel ui using composer)
+    
+    $ php artisan ui vue --auth (create auth using artisan)
+    
+    $ npm intsall 
+    
+    $ npm run dev
  
  create database and chnage .env file
  
- $ php artisan migrate
- 
- $ php artisan serve
- 
+    $ php artisan migrate
+    
+    $ php artisan serve
+    
  ## Use Seed and Generate testing data for user table
  
- $ php artisan make:seeder UserSeeder (create seeder class)
+    $ php artisan make:seeder UserSeeder (create seeder class)
  
  seeder class in use faker factory  'use Faker\Factory as Faker' and Generate testing data.
  
- $ php artisan db:seed --class::UserSeeder 
+    $ php artisan db:seed --class::UserSeeder 
 
 Run seeder with class name other wise call UserSeeder in DatabaseSeeder like   
  
- $this->call([
- 
+    $this->call([
           UserSeeder::class
-       
        ]);
-   
-  $ php artisan db:seed
+    $ php artisan db:seed
        
 
  ## Use Datatable to show user listing
@@ -124,7 +121,7 @@ Run seeder with class name other wise call UserSeeder in DatabaseSeeder like
    
   ### install Yajara Plugin 
   
-  $ composer require yajra/laravel-datatables:^1.5
+    $ composer require yajra/laravel-datatables:^1.5
   
   ### load datatable
    create a view and display listing data using a blade template, in this load data table method and the AJAX request is fetching the data from the            server and displays the name and email with the help of  Yajra DataTable package. 
@@ -171,7 +168,7 @@ Add send mail code in delete user function.
 
 Create Observer Class 
 
-Php artisan make:observer "observer name" --model="model name"
+    Php artisan make:observer "observer name" --model="model name"
 
 Register observer App\Providers\EventServiceProvider  in boot ()
 
@@ -188,7 +185,7 @@ Add bootstrap theam
 
 create Request class for validation
 
-$ php artisan make:Request UserRequest
+    $ php artisan make:Request UserRequest
 
 create form for add user , add insert query in controller method with validation
 
@@ -218,53 +215,46 @@ Create Observable and add random_int() on creating method.
 
  Install third party jwt-auth package.
 
- $ composer require tymon/jwt-auth
+    $ composer require tymon/jwt-auth
 
   Add jwt package into a service provider
 
-  'providers' => [
-   ...
-'Tymon\JWTAuth\Providers\LaravelServiceProvider',
-],
-'aliases' => [
+    'providers' => [
     ...
-    'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-     'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
-],
+    'Tymon\JWTAuth\Providers\LaravelServiceProvider',
+    ],
+    'aliases' => [
+        ...
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+    ],
 
  Publish jwt configuration
 
- php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+    php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 
  Generate JWT Key
 
-php artisan jwt:secret
+    php artisan jwt:secret
 
  Create jwt middleware
 
  To use this middleware register this into Kernel
 
- Create API Routes
+    Create API Routes
 
-Create API controller
+    Create API controller
 
 Update User.php model
 
 
- public function getJWTCustomClaims()
-
+    public function getJWTCustomClaims()
     {
-
-        return [];
-        
+        return [];     
     }
-
     public function products()
-
     {
-
         return $this->hasMany(Product::class);
-
     }
 
 ## Send mail using Queue , laravel mix , laravel collective
@@ -273,46 +263,100 @@ Update User.php model
 
  open .env file and define database queue driver on “.env” file
 
- QUEUE_CONNECTION=database
+    QUEUE_CONNECTION=database
 
  Then open the terminal and run following command for queue database tables:
 
-$ php artisan queue:table
+    $ php artisan queue:table
 
 Next, migrate tables into database:
 
-$ php artisan migrate
+    $ php artisan migrate
 
 create queue job using the following command:
 
-$ php artisan make:job QueueJob
+    $ php artisan make:job QueueJob
 
 Run Development Server.
 
 ###  laravel mix
 
-Installing Laravel Mix:
+    Installing Laravel Mix:
 
-npm install
+    npm install
 
-Running Mix:
+    Running Mix:
 
-npm run dev
+    npm run dev
 
 ###   laravel collective
 
 Install laravel collective:
 
-$ composer require laravelcollective/html
+    $ composer require laravelcollective/html
 
 app.php file , In this file locate providers which should look something like :
 
-Collective\Html\HtmlServiceProvider::class,
+    Collective\Html\HtmlServiceProvider::class,
 
 After providers, look for aliases and add the following lines at its bottom
 
-'Form' => Collective\Html\FormFacde::class,
-'Html' => Collective\Html\HtmlFacde::class,
+    'Form' => Collective\Html\FormFacde::class,
+    'Html' => Collective\Html\HtmlFacde::class,
+
+## Auth Token Validation with JWT & Dingo
+
+Installing Dingo:
+
+    composer require dingo/api:1.x.x@dev
+
+Open config/app.php and register provider:
+
+    'providers' => [
+        Dingo\Api\Provider\LaravelServiceProvider::class
+    ]
+
+Publish the configuration file with the following Artisan command:
+
+    php artisan vendor:publish —provider="Dingo\Api\Provider\LaravelServiceProvider"
+
+Then open you .env file and add the following:
+
+    API_STANDARDS_TREE=vnd
+    API_SUBTYPE=myapp   
+    API_PREFIX=api
+    API_VERSION=v1
+    API_STRICT=false
+    API_DEFAULT_FORMAT=json 
+
+Create controller and add api code.
+
+Define  route file in Dingo Api
+
+    $api = app('Dingo\Api\Routing\Router');
+
+    $api->version('v1', function ($api) {
+
+        $api->get('/', function() {
+
+        return ['user' => 'Ok!!!'];
+
+      });
+
+    });
+
+
+Add Transformer in your Project:
+
+    Install Tranfomer :
+
+    composer require "metricloop/laravel-transformer-maker"
+
+    Create transfomer 
+
+    php artisan make:transformer User
+
+
 
 
 

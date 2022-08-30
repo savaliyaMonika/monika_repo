@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiJWTAuthController;
+use App\Http\Controllers\apiDingoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,15 +20,28 @@ use App\Http\Controllers\ApiJWTAuthController;
 });*/
 Route::post('register',[ApiJWTAuthController::class,'register']);
 Route::post('login',[ApiJWTAuthController::class,'login']);
-//Route::post('logout',[ApiJWTAuthController::class,'logout']);
-/* Route::group(['middleware' => ['jwt.verify']], function() {
-    Route::get('logout', [ApiJWTAuthController::class, 'logout']);
-//   Route::post('logout', [ApiJWTAuthController::class, 'logout']);
 
-}); */
   Route::group(['middleware' => 'jwt.verify'], function () {
  
     Route::post('logout', [ApiJWTAuthController::class, 'logout']);
     Route::get('user',[ApiJWTAuthController::class, 'getUser']);
+    Route::get('show/{id}',[ApiJWTAuthController::class,'show']);
   
 }); 
+
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function ($api) {
+
+    $api->get('test', function () {
+        return 'It is ok';
+    });
+    $api->get('userData', [apiDingoController::class, 'index']);
+    $api->get('showData/{id}', [apiDingoController::class, 'show']);
+    $api->post('authenticate', [apiDingoController::class,'login']);
+   
+});
+$api->version('v1', ['middleware' => 'api.auth'], function ($api) {
+      $api->post('authLogout', [apiDingoController::class,'logout']);
+      $api->get('getUsers', [apiDingoController::class,'getUsers']);
+
+});

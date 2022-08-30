@@ -110,13 +110,27 @@ class ApiJWTAuthController extends Controller
         }
     }
     public function getUser(Request $request){
-        
-        $this->validate($request, [
-            'token' => 'required'
-        ]);
-
-      $user = JWTAuth::authenticate($request->token);
-      
-        return response()->json(['user' => $user]);
+       $user =  User::all(); 
+       if (!$user) {
+           return response()->json([
+               'success' => false,
+               'message' => 'Sorry, User not found.'
+           ], 400);
+       }
+       return $user;
     }
+    public function show($id)
+    {
+        $user =  User::find($id);
+    
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, user not found.'
+            ], 400);
+        }
+    
+        return $user;
+    }
+
 }
